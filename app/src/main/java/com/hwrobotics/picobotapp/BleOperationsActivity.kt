@@ -12,9 +12,12 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ * Copyright 2024 Bruce W. Wilson - Modified this code
+
  */
 
-package com.punchthrough.blestarterappandroid
+package com.hwrobotics.picobotapp
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -32,16 +35,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SimpleItemAnimator
-import com.punchthrough.blestarterappandroid.ble.ConnectionEventListener
-import com.punchthrough.blestarterappandroid.ble.ConnectionManager
-import com.punchthrough.blestarterappandroid.ble.ConnectionManager.parcelableExtraCompat
-import com.punchthrough.blestarterappandroid.ble.isIndicatable
-import com.punchthrough.blestarterappandroid.ble.isNotifiable
-import com.punchthrough.blestarterappandroid.ble.isReadable
-import com.punchthrough.blestarterappandroid.ble.isWritable
-import com.punchthrough.blestarterappandroid.ble.isWritableWithoutResponse
-import com.punchthrough.blestarterappandroid.ble.toHexString
-import com.punchthrough.blestarterappandroid.databinding.ActivityBleOperationsBinding
+import com.hwrobotics.picobotapp.databinding.ActivityBleOperationsBinding
+import com.hwrobotics.picobotapp.ble.ConnectionEventListener
+import com.hwrobotics.picobotapp.ble.ConnectionManager
+import com.hwrobotics.picobotapp.ble.ConnectionManager.parcelableExtraCompat
+import com.hwrobotics.picobotapp.ble.isIndicatable
+import com.hwrobotics.picobotapp.ble.isNotifiable
+import com.hwrobotics.picobotapp.ble.isReadable
+import com.hwrobotics.picobotapp.ble.isWritable
+import com.hwrobotics.picobotapp.ble.isWritableWithoutResponse
+import com.hwrobotics.picobotapp.ble.toHexString
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale

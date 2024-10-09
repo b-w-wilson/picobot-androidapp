@@ -12,6 +12,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ * Copyright 2024 Bruce W. Wilson - Modified this code
  */
 
 apply plugin: 'com.android.application'
@@ -20,7 +22,7 @@ apply plugin: 'kotlin-android'
 android {
     compileSdk 34
     defaultConfig {
-        applicationId "com.punchthrough.blestarterappandroid"
+        applicationId "com.hwrobotics.picobotapp"
         minSdk 21
         targetSdk 34
         versionCode 2
@@ -41,7 +43,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
-    namespace 'com.punchthrough.blestarterappandroid'
+    namespace 'com.hwrobotics.picobotapp'
 }
 
 configurations {
@@ -57,6 +59,8 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
     ktlint "com.pinterest.ktlint:ktlint-cli:1.0.1"
+
+    implementation 'com.github.lukkass222:virtual-joystick-android:1.13.5'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

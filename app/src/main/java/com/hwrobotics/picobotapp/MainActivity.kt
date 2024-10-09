@@ -12,9 +12,11 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ * Copyright 2024 Bruce W. Wilson - Modified this code
  */
 
-package com.punchthrough.blestarterappandroid
+package com.hwrobotics.picobotapp
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -41,9 +43,9 @@ import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SimpleItemAnimator
-import com.punchthrough.blestarterappandroid.ble.ConnectionEventListener
-import com.punchthrough.blestarterappandroid.ble.ConnectionManager
-import com.punchthrough.blestarterappandroid.databinding.ActivityMainBinding
+import com.hwrobotics.picobotapp.databinding.ActivityMainBinding
+import com.hwrobotics.picobotapp.ble.ConnectionEventListener
+import com.hwrobotics.picobotapp.ble.ConnectionManager
 import timber.log.Timber
 
 private const val PERMISSION_REQUEST_CODE = 1
@@ -296,7 +298,7 @@ class MainActivity : AppCompatActivity() {
     private val connectionEventListener by lazy {
         ConnectionEventListener().apply {
             onConnectionSetupComplete = { gatt ->
-                Intent(this@MainActivity, BleOperationsActivity::class.java).also {
+                Intent(this@MainActivity, RobotControlActivity::class.java).also {
                     it.putExtra(BluetoothDevice.EXTRA_DEVICE, gatt.device)
                     startActivity(it)
                 }

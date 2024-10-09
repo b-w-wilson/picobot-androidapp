@@ -13,6 +13,9 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
+
+  ~ Copyright 2024 Bruce W. Wilson - Modified this code
+
   -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
@@ -45,12 +48,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".RobotControlActivity"
+            android:screenOrientation="sensorLandscape"
+            android:exported="false"
+            />
         <activity android:name=".BleOperationsActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="sensorPortrait"
             android:exported="false"
             />
         <activity android:name=".MainActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="sensorPortrait"
             android:exported="true"
             >
             <intent-filter>

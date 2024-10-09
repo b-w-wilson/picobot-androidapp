@@ -12,26 +12,29 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ * Copyright 2024 Bruce W. Wilson - Modified this code
+
  */
 
-package com.punchthrough.blestarterappandroid
+package com.hwrobotics.picobotapp
 
-import android.bluetooth.BluetoothGattCharacteristic
+import android.annotation.SuppressLint
+import android.bluetooth.le.ScanResult
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.punchthrough.blestarterappandroid.ble.printProperties
 
-class CharacteristicAdapter(
-    private val items: List<BluetoothGattCharacteristic>,
-    private val onClickListener: ((characteristic: BluetoothGattCharacteristic) -> Unit)
-) : RecyclerView.Adapter<CharacteristicAdapter.ViewHolder>() {
+class ScanResultAdapter(
+    private val items: List<ScanResult>,
+    private val onClickListener: ((device: ScanResult) -> Unit)
+) : RecyclerView.Adapter<ScanResultAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
-            R.layout.row_characteristic,
+            R.layout.row_scan_result,
             parent,
             false
         )
@@ -47,15 +50,20 @@ class CharacteristicAdapter(
 
     class ViewHolder(
         private val view: View,
-        private val onClickListener: ((characteristic: BluetoothGattCharacteristic) -> Unit)
+        private val onClickListener: ((device: ScanResult) -> Unit)
     ) : RecyclerView.ViewHolder(view) {
 
-        fun bind(characteristic: BluetoothGattCharacteristic) {
-            view.findViewById<TextView>(R.id.characteristic_uuid).text =
-                characteristic.uuid.toString()
-            view.findViewById<TextView>(R.id.characteristic_properties).text =
-                characteristic.printProperties()
-            view.setOnClickListener { onClickListener.invoke(characteristic) }
+        @SuppressLint("MissingPermission", "SetTextI18n")
+        fun bind(result: ScanResult) {
+            view.findViewById<TextView>(R.id.device_name).text =
+                if (view.context.hasRequiredBluetoothPermissions()) {
+                    result.device.name ?: "Unnamed"
+                } else {
+                    error("Missing required Bluetooth permissions")
+                }
+            view.findViewById<TextView>(R.id.mac_address).text = result.device.address
+            view.findViewById<TextView>(R.id.signal_strength).text = "${result.rssi} dBm"
+            view.setOnClickListener { onClickListener.invoke(result) }
         }
     }
 }

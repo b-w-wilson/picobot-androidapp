@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.punchthrough.blestarterappandroid.ble
+package com.hwrobotics.picobotapp.ble
 
 import android.bluetooth.BluetoothDevice
 import android.content.Context
